@@ -2,6 +2,8 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import Shelf from './components/Shelf'
+import { Link } from 'react-router-dom'
+
 
 class Home extends React.Component {
 
@@ -33,6 +35,8 @@ class Home extends React.Component {
         this.setState({
             allBooks: books
         })
+
+        BooksAPI.update(book, shelf)
     }
     render() {
         return (
@@ -45,15 +49,21 @@ class Home extends React.Component {
                         <Shelf status="Currently Reading"
                             books={this.state.allBooks.filter((book) => book.shelf === 'currentlyReading')}
                             update={this.updateBook} />
-                        <Shelf status="Currently Reading"
+                        <Shelf status="Want to Read"
                             books={this.state.allBooks.filter((book) => book.shelf === 'wantToRead')}
                             update={this.updateBook} />
-                        <Shelf status="Currently Reading"
+                        <Shelf status="Read"
                             books={this.state.allBooks.filter((book) => book.shelf === 'read')}
                             update={this.updateBook} />
                     </div>
                 </div>
+
+                <div className="open-search">
+                    <Link to='/search'>Add a book</Link>
+                </div>
             </div>
+
+
         )
     }
 }
