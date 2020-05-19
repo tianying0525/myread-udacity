@@ -1,10 +1,12 @@
 import React from 'react'
 import './App.css'
 import {
-  Route
+  Route,
+  Switch
 } from 'react-router-dom'
 import Home from './Home'
 import Search from './Search'
+import Page404 from './Page404'
 
 class BooksApp extends React.Component {
   state = {
@@ -17,9 +19,11 @@ class BooksApp extends React.Component {
     showSearchPage: false,
     allBooks: []
   }
+
   render() {
     return (
       <div>
+        <Switch>
         <Route exact path='/' render={() => (
           <Home />
         )} />
@@ -27,6 +31,11 @@ class BooksApp extends React.Component {
         <Route exact path='/search' render={() => (
           <Search />
         )} />
+
+        <Route exact path='*' render={() => (
+          <Page404 />
+        )} />
+        </Switch>
       </div>
     )
   }

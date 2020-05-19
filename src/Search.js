@@ -54,6 +54,10 @@ class Search extends React.Component {
           })
         })
 
+    } else {
+      this.setState({
+        searchBooks: []
+      })
     }
 
   }

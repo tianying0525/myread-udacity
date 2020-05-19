@@ -13,6 +13,8 @@ class Book extends React.Component {
   }
   render() {
 
+    var shelf = this.props.shelf ? this.props.shelf : 'none'
+
     return (
 
       <li>
@@ -20,7 +22,7 @@ class Book extends React.Component {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.imageLinks ? this.props.imageLinks.thumbnail : ' '}")` }}></div>
             <div className="book-shelf-changer">
-              <select value={this.props.shelf} onChange={this.updateBookShelf}>
+              <select value={shelf} onChange={this.updateBookShelf}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
